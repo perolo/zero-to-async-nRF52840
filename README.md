@@ -3,8 +3,14 @@
 Based on the Original Description below - But not for the microbit, but rather for the nRF52840 DT board.
 The idea was to migrate the code for the alternative board.
 So far only ch7 has been attempted(pure embassy)
+Other Goals:
+* Learn Rust/Embassy
+* Learn NixOs
+* Learn Dfmt
+* Evaluate jj
 
 ## Features
+* ch0_start migrated
 * ch7_embassy migrated (with 4 leds)
 * Nix flake added
 * Segger JLink driver added

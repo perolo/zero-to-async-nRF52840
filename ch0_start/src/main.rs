@@ -18,7 +18,7 @@ use defmt::{info, debug};
 
 #[entry]
 fn main() -> ! {
-    info!("Hello, World!");
+    info!("Hello, ch0_start!");
     let peripherals = Peripherals::take().unwrap();    
     let mut timer = Timer::new(peripherals.TIMER0);
     let port0 = hal::gpio::p0::Parts::new(peripherals.P0);

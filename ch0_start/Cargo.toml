@@ -27,3 +27,10 @@ defmt-debug = []
 defmt-info = []
 defmt-warn = []
 defmt-error = []
+
+[package.metadata.cargo-machete]
+ignored = [
+  "cortex-m",
+  "rtt-target"
+  ]
+  

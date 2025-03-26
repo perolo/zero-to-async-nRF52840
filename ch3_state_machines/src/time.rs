@@ -1,5 +1,7 @@
 use fugit::{Duration, Instant};
-use microbit::{hal::Rtc, pac::RTC0};
+use nrf52840_hal::Rtc;
+use nrf52840_hal::pac::RTC0;
+
 
 type TickInstant = Instant<u64, 1, 32768>;
 type TickDuration = Duration<u64, 1, 32768>;

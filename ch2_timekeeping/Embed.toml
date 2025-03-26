@@ -1,5 +1,5 @@
 [default.general]
-chip = "nRF52833_xxAA"
+chip = "nRF52840_xxAA"
 
 [default.reset]
 halt_afterwards = false

@@ -4,26 +4,51 @@ Based on the Original Description below - But not for the microbit, but rather f
 The idea was to migrate the code for the alternative board.
 So far only ch7 has been attempted(pure embassy)
 Other Goals:
-* Learn Rust/Embassy
+* Learn Rust/Hal/Embassy
 * Learn NixOs
 * Learn Dfmt
 * Evaluate jj
 
+!
+<img src="resources/nrf-devboard.jpg"  align="center">
+
 ## Features
-* ch0_start migrated
-* ch7_embassy migrated (with 4 leds)
-* Nix flake added
-* Segger JLink driver added
+* [x]  ch0_start migrated
+* [x]  ch7_embassy migrated (with 4 leds)
+* [x]  Nix flake added
+* [x]  Segger JLink driver added
+* [x]  Fix permissions for JLink - requires sudo..., fail to add a rule to cat /etc/udev/rules.d/
+* [x]  defmt logging
+* [x]  Update all dependencies to latest
 
 
 ## Additional improvements (ideas):
-* Fix permissions for JLink - requires sudo..., fail to add a rule to cat /etc/udev/rules.d/
-* Update all dependencies to latest
-* The remaining chapters
-* remove some unwraps?
-* Investigate development with QEMU - I think there is a visual python simulator also ?!
-* defmt logging
+* [ ]  ch1_ migrated
+* [ ]  ch2_ migrated
+* [ ]  ch3_ migrated
+* [ ]  ch4_ migrated
+* [ ]  ch5_ migrated
+* [ ]  ch6_ migrated
+* [ ]  remove some unwraps?
+* [ ]  Investigate development with QEMU - I think there is a visual python simulator also ?!
 
+## Getting Started
+
+
+### Using Nix flake to setup development environment
+```bash
+$ nix develop
+```
+### Flash and Run Application
+```bash
+$ cd ch0_start
+$ cargo run 
+```
+
+### Customize Defmt loglevel
+```bash
+$ DEFMT_LOG=info cargo run
+```
 
 # Original Description
 

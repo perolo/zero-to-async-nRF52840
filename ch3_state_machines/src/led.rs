@@ -1,10 +1,20 @@
 use embedded_hal::digital::{OutputPin, StatefulOutputPin};
 use fugit::ExtU64;
-use microbit::{
-    gpio::NUM_COLS,
-    hal::gpio::{Output, Pin, PushPull},
-};
-use rtt_target::rprintln;
+//use microbit::{
+//    gpio::NUM_COLS,
+//    hal::gpio::{Output, Pin, PushPull},
+//};
+//use rtt_target::rprintln;
+
+//use nrf52840_hal::gpio::NU; //???
+use nrf52840_hal::gpio::Output;
+use nrf52840_hal::gpio::Pin;
+use nrf52840_hal::gpio::PushPull;
+
+const NUM_COLS: usize = 4;
+
+#[cfg(target_os = "none")] // embedded target
+use defmt::{info, debug};
 
 use crate::{
     button::ButtonDirection,
@@ -41,8 +51,8 @@ impl<'a> LedTask<'a> {
     }
 
     fn shift(&mut self, direction: ButtonDirection) {
-        rprintln!("Button press detected..");
-        // switch off current/old LED
+        //rprintln!("Button press detected..");
+        info!("Button press detected..");        // switch off current/old LED
         self.col[self.active_col].set_high().ok();
         self.active_col = match direction {
             ButtonDirection::Left => match self.active_col {
@@ -58,17 +68,20 @@ impl<'a> LedTask<'a> {
     pub fn poll(&mut self) {
         match self.state {
             LedState::Toggle => {
-                rprintln!("Blinking LED {}", self.active_col);
+                //rprintln!("Blinking LED {}", self.active_col);
+                info!("Blinking LED {}", self.active_col);
                 self.col[self.active_col].toggle().ok();
                 self.state = LedState::Wait(Timer::new(500.millis(), &self.ticker));
             }
             LedState::Wait(ref timer) => {
                 if timer.is_ready() {
+                    debug!("Toggle LED {}", self.active_col);
                     self.state = LedState::Toggle;
                 }
                 if let Some(direction) = self.receiver.receive() {
                     self.shift(direction);
                     self.state = LedState::Toggle;
+                    debug!("Shift LED {}", self.active_col);
                 }
             }
         }

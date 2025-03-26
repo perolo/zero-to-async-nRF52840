@@ -14,6 +14,9 @@ Other Goals:
 
 ## Features
 * [x]  ch0_start migrated
+* [x]  ch1_ migrated
+* [x]  ch2_ migrated (rtc problems)
+* [x]  ch3_ migrated (rtc problems)
 * [x]  ch7_embassy migrated (with 4 leds)
 * [x]  Nix flake added
 * [x]  Segger JLink driver added
@@ -23,12 +26,10 @@ Other Goals:
 
 
 ## Additional improvements (ideas):
-* [ ]  ch1_ migrated
-* [ ]  ch2_ migrated
-* [ ]  ch3_ migrated
 * [ ]  ch4_ migrated
 * [ ]  ch5_ migrated
 * [ ]  ch6_ migrated
+* [ ]  fix rtc
 * [ ]  remove some unwraps?
 * [ ]  Investigate development with QEMU - I think there is a visual python simulator also ?!
 
